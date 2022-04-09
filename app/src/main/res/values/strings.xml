@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">MasterMind Game</string>
+<!-- TODO: Remove or change this placeholder text -->
+    <string name="hint_guess_a_number">Guess a number</string>
+    <string name="guess_title">G U E S S</string>
+    <string name="guess_button">Guess!</string>
+    <string name="the_number_title">the number</string>
+    <string name="new_game">Start a new game</string>
+    <string name="incorrect_guesses">Incorrect guesses: %s</string>
+    <string name="lives_left">You have %d lives left</string>
+</resources>

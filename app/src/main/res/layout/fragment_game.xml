@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".GameFragment"
+    android:orientation="vertical"
+    android:padding="8dp">
+
+    <TextView
+        android:id="@+id/guess_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/guess_title"
+        android:textSize="64sp"
+        android:textStyle="bold"
+        android:layout_gravity="center"
+        android:textColor="@color/purple_500"/>
+
+    <TextView
+        android:id="@+id/thenumber_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/the_number_title"
+        android:textSize="36sp"
+        android:textStyle="bold|italic"
+        android:layout_gravity="center"
+        android:layout_marginBottom="36dp"/>
+
+    <TextView
+        android:id="@+id/number"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        tools:text="4 3 2 1"
+        android:textSize="36sp"
+        android:layout_gravity="center"
+        android:layout_marginBottom="24dp"/>
+
+    <TextView
+        android:id="@+id/lives_left"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/lives_left"
+        android:layout_gravity="center"/>
+
+    <TextView
+        android:id="@+id/incorrect_guesses"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/incorrect_guesses"
+        android:layout_gravity="center"
+        android:layout_marginBottom="48dp"/>
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="number"
+        android:layout_gravity="center"
+        android:hint="@string/hint_guess_a_number"
+        android:layout_marginBottom="16dp"/>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:text="@string/guess_button" />
+
+
+
+
+
+
+
+
+</LinearLayout>
