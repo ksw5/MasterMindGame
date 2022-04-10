@@ -30,6 +30,10 @@ android {
     kotlinOptions {
         jvmTarget = '1.8'
     }
+    buildFeatures {
+        dataBinding true
+        viewBinding true
+    }
 }
 
 dependencies {
@@ -44,6 +48,8 @@ dependencies {
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'
     // Retrofit2
     implementation 'com.squareup.retrofit2:retrofit:2.9.0'
+    // Retrofit2 Scalars
+    implementation 'com.squareup.retrofit2:converter-scalars:2.9.0'
     // Retrofit w/ Moshi Converter
     implementation 'com.squareup.retrofit2:converter-moshi:2.9.0'
     implementation 'com.squareup.moshi:moshi-kotlin:1.9.3'
