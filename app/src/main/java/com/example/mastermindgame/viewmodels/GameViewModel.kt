@@ -13,39 +13,40 @@ import retrofit2.Response
 class GameViewModel: ViewModel() {
 
     private val _randomNumbersDisplay = MutableLiveData<String>()
-    val randomNumbersDisplay: LiveData<String> = _randomNumbersDisplay
-    private val secretNumbers = _randomNumbersDisplay.value?.get(0).toString()
+    val randomNumbersDisplay: LiveData<String>
+        get() = _randomNumbersDisplay
+    private val secretNumbers = _randomNumbersDisplay.value.toString()
     private var correctGuesses = ""
-    private val _incorrectGuesses = MutableLiveData<String>("")
+    private val _incorrectGuesses = MutableLiveData("")
     val incorrectGuesses: LiveData<String>
         get() = _incorrectGuesses
-    private val _livesLeft = MutableLiveData<Int>(10)
+    private val _livesLeft = MutableLiveData(10)
     val livesLeft: LiveData<Int>
         get() = _livesLeft
-    private val _gameOver = MutableLiveData<Boolean>(false)
+    private val _gameOver = MutableLiveData(false)
     val gameOver: LiveData<Boolean>
         get() = _gameOver
 
     init {
-        _randomNumbersDisplay.value = getRandomNumbers()
+        getRandomNumbers()
     }
 
 
 
-    fun getRandomNumbers(): String {
+    fun getRandomNumbers(): String? {
         viewModelScope.launch {
             _randomNumbersDisplay.value = GameApiService.retrofitService.getRandomNumbers()
             displayCorrectNumbers(secretNumbers)
 
         }
-        return secretNumbers
+        return _randomNumbersDisplay.value
     }
 
     fun displayCorrectNumbers(numbers: String) : String {
         var display = ""
-        secretNumbers.forEach {
-            display += checkNumber(it.toString())
-        }
+        numbers.forEach {
+                display += checkNumber(it.toString())
+            }
         return display
     }
 
@@ -57,14 +58,14 @@ class GameViewModel: ViewModel() {
     fun makeGuess(guess: String) {
         if (guess.length == 1) {
             if (secretNumbers.contains(guess))  {
-                correctGuesses += guess
-                _randomNumbersDisplay.value = getRandomNumbers()
-            } else {
-                _incorrectGuesses.value += "$guess "
-                _livesLeft.value = _livesLeft.value?.minus(1)
-            }
+                    correctGuesses += guess
+                 _randomNumbersDisplay.value = getRandomNumbers()!!
+                } else {
+                    _incorrectGuesses.value += "$guess "
+                    _livesLeft.value = _livesLeft.value?.minus(1)
+                }
         }
-        if (isWon() == true || isLost()) _gameOver.value = true
+        if (isWon() || isLost()) _gameOver.value = true
     }
 
     private fun isWon() = secretNumbers.equals((randomNumbersDisplay.value.toString()), true)

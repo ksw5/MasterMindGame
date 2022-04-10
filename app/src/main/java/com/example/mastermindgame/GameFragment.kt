@@ -16,9 +16,10 @@ class GameFragment : Fragment() {
     lateinit var viewModel: GameViewModel
 
 
-
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
-                              savedInstanceState: Bundle?): View? {
+    override fun onCreateView(
+        inflater: LayoutInflater, container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
         // Inflate the layout for this fragment
         _binding = FragmentGameBinding.inflate(inflater, container, false)
         val view = binding.root
@@ -26,11 +27,15 @@ class GameFragment : Fragment() {
         binding.gameViewModel = viewModel
         binding.lifecycleOwner = viewLifecycleOwner
 
+
         binding.guessButton.setOnClickListener {
             viewModel.makeGuess(binding.guess.text.toString())
             binding.guess.text = null
 
         }
+
+
+
 
         return view
     }
