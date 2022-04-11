@@ -2,7 +2,6 @@ package com.example.mastermindgame.model.network
 
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
-import retrofit2.Call
 import retrofit2.Retrofit
 import retrofit2.converter.scalars.ScalarsConverterFactory
 import retrofit2.http.GET
@@ -20,6 +19,7 @@ val retrofit = Retrofit.Builder()
     .addConverterFactory(ScalarsConverterFactory.create())
     .baseUrl(BASE_URL)
     .build()
+
 
 interface RandomNumberApiRequest {
     @Headers("Accept: text/plain")
