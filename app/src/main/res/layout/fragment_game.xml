@@ -43,7 +43,6 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             tools:text="4 3 2 1"
-            android:text="@{gameViewModel.randomNumbersDisplay}"
             android:textSize="36sp"
             android:layout_gravity="center"
             android:layout_marginBottom="24dp"/>

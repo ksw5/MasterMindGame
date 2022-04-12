@@ -27,20 +27,21 @@ class GameViewModel : ViewModel() {
         get() = _gameOver
 
     init {
-        _randomNumbersDisplay.value = getRandomNumbers()!!
+        _randomNumbersDisplay.value = getRandomNumbers()
     }
 
 
-    fun getRandomNumbers(): String? {
+    fun getRandomNumbers(): String {
         viewModelScope.launch {
             _randomNumbersDisplay.value = GameApiService.retrofitService.getRandomNumbers()
+            displayCorrectNumbers()
         }
         return _randomNumbersDisplay.value.toString()
+
     }
 
 
     fun displayCorrectNumbers(): String {
-        //getRandomNumbers()
         var display = ""
         secretNumbers.toString().forEach {
             display += checkNumber(it.toString())
@@ -63,21 +64,21 @@ class GameViewModel : ViewModel() {
                 _livesLeft.value = _livesLeft.value?.minus(1)
             }
         }
-        //if (isWon() || isLost()) _gameOver.value = true
+        if (isWon() == true || isLost()) _gameOver.value = true
 
 
     }
 
-   // private fun isWon() = secretNumbers!!.equals((randomNumbersDisplay.value.toString()))
-    //private fun isLost() = livesLeft.value ?: 0 <= 0
+    private fun isWon() = secretNumbers?.equals((randomNumbersDisplay.value.toString()))
+    private fun isLost() = livesLeft.value ?: 0 <= 0
 
-//    fun wonLostMessage(): String {
-//        var message = ""
-//        if (isWon()) message = "You won!"
-//        else if (isLost()) message = "You lost!"
-//        message += " The number was ${randomNumbersDisplay.value}"
-//        return message
-//    }
+    fun wonLostMessage(): String {
+        var message = ""
+        if (isWon() == true) message = "You won!"
+        else if (isLost()) message = "You lost!"
+        message += " The number was ${randomNumbersDisplay.value}"
+        return message
+    }
 
 }
 
