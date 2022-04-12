@@ -1,4 +1,4 @@
-package com.example.mastermindgame
+package com.example.mastermindgame.view.fragments
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
+import com.example.mastermindgame.R
 import com.example.mastermindgame.databinding.FragmentResultBinding
 import com.example.mastermindgame.viewmodels.ResultViewModel
 import com.example.mastermindgame.viewmodels.ResultViewModelFactory

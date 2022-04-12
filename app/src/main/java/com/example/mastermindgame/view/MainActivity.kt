@@ -1,8 +1,8 @@
-package com.example.mastermindgame
+package com.example.mastermindgame.view
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import androidx.navigation.fragment.NavHostFragment
+import com.example.mastermindgame.R
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {

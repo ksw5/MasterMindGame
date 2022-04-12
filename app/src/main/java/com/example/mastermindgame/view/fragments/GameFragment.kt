@@ -1,4 +1,4 @@
-package com.example.mastermindgame
+package com.example.mastermindgame.view.fragments
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -11,7 +11,6 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
 import com.example.mastermindgame.databinding.FragmentGameBinding
 import com.example.mastermindgame.viewmodels.GameViewModel
-import okio.utf8Size
 
 class GameFragment : Fragment() {
     private var _binding: FragmentGameBinding? = null
@@ -31,8 +30,10 @@ class GameFragment : Fragment() {
 
         viewModel.gameOver.observe(viewLifecycleOwner, Observer {
             if (it) {
-                val action = GameFragmentDirections
-                    .actionGameFragmentToResultFragment(viewModel.wonLostMessage())
+                val action =
+                    GameFragmentDirections.actionGameFragmentToResultFragment(
+                        viewModel.wonLostMessage()
+                    )
                 view.findNavController().navigate(action)
             }
         })
