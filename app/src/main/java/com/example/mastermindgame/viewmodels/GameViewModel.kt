@@ -55,7 +55,7 @@ class GameViewModel : ViewModel() {
     }
 
     fun makeGuess(guess: String) {
-        if (guess.length == 4) {
+        if (guess.length in 1..4) {
             if (secretNumbers.toString().contains(guess)) {
                 correctGuesses += guess
                 _randomNumbersDisplay.value = displayCorrectNumbers()
@@ -65,11 +65,9 @@ class GameViewModel : ViewModel() {
             }
         }
         if (isWon() == true || isLost()) _gameOver.value = true
-
-
     }
 
-    private fun isWon() = secretNumbers?.equals((randomNumbersDisplay.value.toString()))
+    private fun isWon() = secretNumbers?.equals((randomNumbersDisplay.value))
     private fun isLost() = livesLeft.value ?: 0 <= 0
 
     fun wonLostMessage(): String {
